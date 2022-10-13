@@ -1,0 +1,66 @@
+
+int javier, joel, prueba;
+int prueba = 5+5+javier;
+celular = true;
+int var1, var2, var3;
+boolean flag_1, flag2_, flag33 = false;
+char ch_1, ch_2, ch3, qwert123 = 'M';
+universidad= "usac";
+int asd,asd,a_= 1000;
+
+int edad = (int) 18.6;
+int intBool = (int) false;
+int intDecimal = (int) '0' ;
+Int intCadena = (int) "100";
+
+double doubleInt = (Double) 16; 
+double doubleString = (Double) "16.0";
+
+
+boolean boolInt = (Boolean)  11  ;
+Boolean boolDouble = (Boolean) 1.0;
+Boolean boolString = (Boolean) "0";
+Boolean boolChar = (Boolean) "1";
+
+Char charInt = (Char) 16;
+Char charDouble = (Char) 16.1;
+Char charBoolean = (Char) false;
+Char charBoolean = (Char) true;
+Char charString = (Char) "asdf";
+
+String stringInt = (String) 16; 
+String stringDouble = (String) 16.1; 
+String stringBoolean = (String) false;
+String stringBoolean = (String) true;
+String stringChar = (String) "a"; 
+String stringChar = (String) "prueba"; 
+
+
+edad++;
+edad--;
+anio = 1 + anio++; 
+anio = 1 - anio--; 
+anio = anio--; 
+anio = anio++; 
+
+Int [ ] vector1 = new Int[4];
+double [ ] vector1 = new double[4];
+boolean [ ] vector1 = new boolean[4];
+char [ ] vector1 = new char[4];
+String [ ] vector1 = new String[4];
+
+
+Char [ ][ ] vectorDosd = new Char [(Int) "4"] [4] ; 
+Int [ ][ ] vectorDosd = new int [4] [4] ; 
+Double [ ][ ] vectorDosd = new Double [4] [4] ; 
+String [ ][ ] vectorDosd = new String [4] [4] ;
+Boolean [ ][ ] vectorDosd = new Boolean [4] [4] ;  
+
+int [ ] vector1 = {8, 8,8,8};
+String [ ] vector2 = {"pueba1", "prueba2","prueba3","prueba4"};
+Char [] vector3 = {"a","b","c,"d"};
+Double [ ] vector4 = {8.5, 8.6,8.7,8.8};
+Boolean [ ] vector5 = {true};
+Boolean [ ] vector6 = {true,true};
+Boolean [ ] vector1 = {false, false};
+Boolean [ ] vector1 = {false};
