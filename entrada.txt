@@ -1,12 +1,13 @@
 
 int javier, joel, prueba;
-int prueba = 5+5+javier;
+
 celular = true;
 int var1, var2, var3;
 boolean flag_1, flag2_, flag33 = false;
 char ch_1, ch_2, ch3, qwert123 = 'M';
 universidad= "usac";
 int asd,asd,a_= 1000;
+int prueba = 5+5+javier ;
 
 int edad = (int) 18.6;
 int intBool = (int) false;
@@ -36,19 +37,27 @@ String stringChar = (String) "a";
 String stringChar = (String) "prueba"; 
 
 
-edad++;
-edad--;
-anio = 1 + anio++; 
-anio = 1 - anio--; 
-anio = anio--; 
-anio = anio++; 
 
+//acceso a vectores
+String valorPosicion = vector1[1]; 
+Char valorPosicion = vector2[1]; 
+Boolean valorPosicion = vector3[1]; 
+Double valorPosicion = vector4[1]; 
+int valor = vectorDosd[1]; 
+
+Char valor = vectorDosd[1][1];
+String valor = vectorDosd[1][1];
+Boolean valor = vectorDosd[1][1];
+Double valor = vectorDosd[1][1]; 
+int valor = vectorDosd[1][1]; 
+
+
+// declaracioon tipo 1 de vectores
 Int [ ] vector1 = new Int[4];
 double [ ] vector1 = new double[4];
 boolean [ ] vector1 = new boolean[4];
 char [ ] vector1 = new char[4];
 String [ ] vector1 = new String[4];
-
 
 Char [ ][ ] vectorDosd = new Char [(Int) "4"] [4] ; 
 Int [ ][ ] vectorDosd = new int [4] [4] ; 
@@ -56,11 +65,129 @@ Double [ ][ ] vectorDosd = new Double [4] [4] ;
 String [ ][ ] vectorDosd = new String [4] [4] ;
 Boolean [ ][ ] vectorDosd = new Boolean [4] [4] ;  
 
+// declaracion tipo 2 con lista de valores
+
 int [ ] vector1 = {8, 8,8,8};
-String [ ] vector2 = {"pueba1", "prueba2","prueba3","prueba4"};
-Char [] vector3 = {"a","b","c,"d"};
+int [ ] vector1 = {8, 8,8,8, 8,8,8};
+String [ ] vector2 = {"prueba2","prueba3","prueba4","prueba3","prueba4"};
 Double [ ] vector4 = {8.5, 8.6,8.7,8.8};
+Char [] vector3 = {"a","b","c,"d"};
 Boolean [ ] vector5 = {true};
 Boolean [ ] vector6 = {true,true};
 Boolean [ ] vector1 = {false, false};
 Boolean [ ] vector1 = {false};
+
+
+int [ ][ ] vectordosd2 = {{ 0 ,0},{0 , 0}};
+//String [ ][ ] vectordosd2 = {{"prueba2","prueba3"},{"prueba2","prueba3"}};
+
+
+
+// if normal
+if ( 10 < 5){
+    int Prueba100 = 100;
+    universidad= "usac";
+    int asd,asd,a_= 1000;
+    int prueba = 5+5+javier ;
+}
+
+// if anidado
+if ( 10 < 5){
+    if ( 10 != 5){
+        int Prueba100 = 100;
+    }
+}
+
+// if else
+if ( 10 < 5){
+    int Prueba100 = 100;
+}else{
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+
+// IF CON ELIF
+ if ( 10 < 5){
+    int Prueba100 = 100;
+}elif( 10 > 5){
+    int Prueba100 = 100;
+    universidad= "usac";
+}elif( 10 == 5){
+    int Prueba100 = 100;
+    universidad= "usac";
+}elif( 10 == 5){
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+else{
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+
+
+
+// switch case
+
+int edad = 18;
+switch(x){
+case 1:
+    int Prueba100 = 100;
+    universidad = "usac";
+    if( 10 == 5){
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+case 2:
+    int Prueba100 = 100;
+    universidad = "usac";
+case 3:
+    int Prueba100 = 100;
+    universidad = "usac";
+case 4:
+    int Prueba100 = 100;
+    universidad = "usac";
+Default:
+    universidad = "PRUEBA 100";
+}
+
+// sin default
+switch(x){
+case 1:
+    int Prueba100 = 100;
+    universidad = "usac";
+case 1:
+    int Prueba100 = 100;
+    universidad = "usac";
+case 1:
+    int Prueba100 = 100;
+    universidad = "usac";
+      
+}
+
+// ciclo While
+
+
+edad ++;
+Incremtos = a++;
+anio = 1 + anio++; 
+anio = 1 - anio--; 
+anio = anio--; 
+anio = anio++; 
+
+
+// modificacion DE VECTORES 
+vector2[1] = "OLC1 ";
+vector2[2] = "2do Semestre" +vectorNumero[2];
+
+while (x<100){
+    if (x > 50)
+    {
+    prueba = "prueba20";
+    //Más sentencias
+    }else{
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+}
+
+//CONTINUAR CON EL FOR
