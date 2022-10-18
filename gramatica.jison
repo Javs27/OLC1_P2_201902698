@@ -65,6 +65,7 @@
 "boolean" return 'Boolean';
 "char"    return  'Char';
 "string"  return  'String';
+"void"    return  'Void';
 
 
 "false"   return 'falso';
@@ -92,10 +93,11 @@
 "round"     return 'round';
 "length"    return 'length';
 "typeof"    return 'typeof';
-"toString"  return  'toString';
+"toString"  return  'ToString';
 "toCharArray" return 'toCharArray';
-"push"      return 'push';
-"run"       return 'run';
+"push"      return 'Push';
+"pop"       return 'Pop'
+"run"       return 'Run';
 "Default"   return 'default';
 
 [0-9]+("."[0-9]+)?\b    return 'Numero';
@@ -143,8 +145,24 @@ ACCION:
         | VECTOR_TIPO1
         | VECTOR_TIPO2
         | SWITCH_CASE
-        | CICLO_WHILE
         | DECLARACION_INCREMENTOS
+        | CICLO_FOR
+        | CICLO_WHILE
+        | SENTENCIA_TRANSFERENCIA     
+        | FUNCIONES 
+        | METODO
+        | FUNCION_PRINT
+        | FUNCION_LOWER
+        | FUNCION_UPPER
+        | FUNCION_ROUND
+        | FUNCION_LENGTH
+        | FUNCION_TYPEOF
+        | FUNCION_TOSTRING
+        | TOCHAR_ARRAY
+        | FUNCION_PUSH
+        | FUNCION_POP
+        | FUNCION_RUN
+        | PARAMETROS_LLAMADA
 ;
 
 
@@ -172,6 +190,8 @@ DECLARACION:
         | Double LISTA_IDENTIFICADOR puntoComa
 
         | ACCESO_VECTORES igual ARITMETICA puntoComa
+        | LISTA_IDENTIFICADOR parentA ARITMETICA parentC
+        | LLAMAR_FUNCIONES
         
 
 
@@ -198,6 +218,7 @@ ARITMETICA:
         | LISTA_IDENTIFICADOR decremento 
         |  Identificador corcheteA ARITMETICA corcheteC
         |  Identificador corcheteA ARITMETICA corcheteC  corcheteA ARITMETICA corcheteC
+        
       
 
 ;
@@ -299,6 +320,10 @@ CONDICIONAL:
         | ARITMETICA mayorIgual ARITMETICA
         | ARITMETICA igualigual ARITMETICA
         | ARITMETICA diferente ARITMETICA
+        | ARITMETICA operadorAnd ARITMETICA
+        | ARITMETICA operadorNot ARITMETICA
+        | ARITMETICA operadorOr ARITMETICA
+        
        
         
         
@@ -344,3 +369,130 @@ CICLO_WHILE:
         While  parentA CONDICIONAL parentC llaveA ACCIONES llaveC
         
 ;    
+
+
+CICLO_FOR:
+        for parentA DECLARACION CONDICIONAL puntoComa ARITMETICA parentC llaveA
+                ACCIONES   llaveC
+        // for con incremento en la asignacion 
+        |    for parentA DECLARACION CONDICIONAL puntoComa 
+                ARITMETICA igual ARITMETICA suma ARITMETICA
+                 parentC llaveA ACCIONES   llaveC    
+        // fot con decremento en la asignacion 
+        | for parentA DECLARACION CONDICIONAL puntoComa 
+                ARITMETICA igual ARITMETICA resta ARITMETICA
+                 parentC llaveA ACCIONES   llaveC  
+        // for con variables en la asignacion
+        
+;
+
+CICLO_WHILE:
+        do llaveA ACCIONES llaveC While parentA CONDICIONAL parentC puntoComa
+        // Do until 
+        do llaveA   ACCIONES  llaveC until parentA CONDICIONAL parentC puntoComa
+;
+
+
+SENTENCIA_TRANSFERENCIA:
+        break puntoComa
+        | continue puntoComa
+        | return puntoComa
+        | return ARITMETICA puntoComa
+
+;
+
+FUNCIONES:
+        LISTA_IDENTIFICADOR   parentA PARAMETROS parentC dosPuntos 
+                TIPO_DATO llaveA ACCIONES llaveC
+        // FUNCION SIN PARAMETROS 
+        |  LISTA_IDENTIFICADOR   parentA  parentC dosPuntos 
+                TIPO_DATO llaveA ACCIONES llaveC
+        
+;
+
+LLAMAR_FUNCIONES:
+        LISTA_IDENTIFICADOR parentA parentC puntoComa
+;
+
+LLAMAR_PARAMETROS:
+        PARAMETROS coma  ARITMETICA
+        |  ARITMETICA
+
+;
+
+
+PARAMETROS:
+        PARAMETROS coma TIPO_DATO Identificador
+        | TIPO_DATO Identificador
+        
+       
+;
+
+
+TIPO_DATO:
+        Int | String | Boolean | Char | Double
+;
+
+METODO:
+        LISTA_IDENTIFICADOR parentA parentC dosPuntos Void llaveA ACCIONES llaveC
+        // metodo sin tipo definido 
+        | LISTA_IDENTIFICADOR parentA parentC dosPuntos llaveA ACCIONES llaveC
+;
+
+
+FUNCION_PRINT:
+        print parentA ARITMETICA parentC puntoComa
+        | println parentA ARITMETICA parentC puntoComa
+;
+
+FUNCION_LOWER:
+        String LISTA_IDENTIFICADOR igual toLower parentA ARITMETICA parentC puntoComa
+;
+
+FUNCION_UPPER:
+        String LISTA_IDENTIFICADOR igual toUpper parentA ARITMETICA parentC puntoComa
+;
+
+FUNCION_ROUND:
+        Double LISTA_IDENTIFICADOR igual round parentA Numero parentC puntoComa
+        | Int LISTA_IDENTIFICADOR igual round parentA Numero parentC puntoComa
+;
+
+FUNCION_LENGTH:
+       String LISTA_IDENTIFICADOR igual  length parentA Identificador parentC puntoComa
+       |   Int LISTA_IDENTIFICADOR igual  length parentA Identificador corcheteA Numero corcheteC parentC puntoComa
+
+;
+
+
+FUNCION_TYPEOF:
+        String LISTA_IDENTIFICADOR igual typeof parentA ARITMETICA parentC puntoComa
+       |  Int LISTA_IDENTIFICADOR igual typeof parentA ARITMETICA parentC puntoComa
+        |  Boolean LISTA_IDENTIFICADOR igual typeof parentA ARITMETICA parentC puntoComa 
+        |  Char LISTA_IDENTIFICADOR igual typeof parentA ARITMETICA parentC puntoComa
+        |  Double LISTA_IDENTIFICADOR igual typeof parentA ARITMETICA parentC puntoComa
+;
+
+FUNCION_TOSTRING:
+        Int LISTA_IDENTIFICADOR igual ToString parentA ARITMETICA parentC puntoComa
+        | String LISTA_IDENTIFICADOR igual ToString parentA ARITMETICA parentC puntoComa
+        | Boolean LISTA_IDENTIFICADOR igual ToString parentA ARITMETICA parentC puntoComa
+;
+
+
+TOCHAR_ARRAY:
+        Char corcheteA corcheteC ARITMETICA igual toCharArray 
+                parentA Cadena parentC puntoComa
+;
+
+FUNCION_PUSH:
+        LISTA_IDENTIFICADOR punto Push parentA ARITMETICA parentC puntoComa
+;
+
+FUNCION_POP:
+        LISTA_IDENTIFICADOR punto Pop parentA parentC puntoComa
+;
+
+FUNCION_RUN:
+        Run LLAMAR_FUNCIONES 
+;

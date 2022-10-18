@@ -191,3 +191,180 @@ while (x<100){
 }
 
 //CONTINUAR CON EL FOR
+for ( int i=0; i<3;i++ ){
+    int Prueba100 = 100;
+     if ( 10 < 5){
+    int Prueba100 = 100;
+}
+}
+
+
+for ( i=5; i>2;i=i+1 ){
+    int Prueba100 = 100;
+}
+
+for ( i=5; i>2;i=i-1 ){
+    int Prueba100 = 100;
+    int Prueba100 = 100;
+    int Prueba100 = 100;
+    int Prueba100 = 100;
+
+}
+
+// ciclo while 
+do{
+ if (a <3){
+ javier = "javer1"; 
+ println("Hola mundo!!");
+ }
+ else{
+ javier = "javer1"; 
+ }
+ a ++;
+}while (i=5);
+
+
+// do until
+
+do{
+    if (a <3){
+    javier = "javer1";
+    println("Hola mundo!!"); 
+    }
+    else{
+    javier = "javer1"; 
+    }
+    a --;
+
+} until (a==0);
+
+
+continue;
+break;
+continue;
+break;
+continue;
+break;
+
+for(int i = 0; i < 9; i++){
+ if(i==5){
+    println("Hola mundo!!");
+    int Prueba100 = 100; continue;
+ }
+ int Prueba100 = 100;
+}
+
+
+return;
+return;
+return PRUEBA ;
+
+for(i = 0; i < 9; i++){
+     if(i==5){
+        println("Hola mundo!!");
+        return; //se detiene
+    }
+}   
+
+// METODO SIN PARAMETROS
+
+conversion (): Int {
+ if (tipo == "metro")
+    {
+    return ;
+    }else{
+    return ;
+    }
+  }
+// METODO CON PARAMETROS
+
+conversion (double pies, string tipo ): Int {
+ if (tipo == "metro")
+    {
+    return ;
+    }else{
+    return ;
+    }
+  }
+
+  // METODOS
+
+holamundo(): void {
+    universidad= "usac";
+int asd,asd,a_= 1000;
+int prueba = 5+5+javier ;
+}
+
+// metodo sin tipo definido
+holamundo():  {
+        universidad= "usac";
+        println("Hola mundo!!");
+        int prueba = 5+5+javier ;
+}
+
+Print("Hola mundo!!");
+print(100);
+print('a');
+print(true);
+print(false);
+print(5+8-10/100);
+
+println("Hola mundo!!");
+println(100);
+println('a');
+println(true);
+println(false);
+println(5+8-10/100);
+
+
+string cad_1 = toLower("Prueba");
+string cad_1 = toUpper("Prueba");
+
+Double valor = round(5.8); 
+Double valor2 = round(5.4);
+
+Int valor = round(5.8); 
+Int valor2 = round(5.4);
+
+
+String[ ] vector2 = {"hola", "Mundo"};
+String [ ] vector2 = {"prueba2","prueba3","prueba4","prueba3","prueba4"};
+string vector2 = length(vector2);
+
+int tam_hola = length(tam_vector[0]);
+
+
+// Tipe of
+String tipo = typeof(15);
+int tipo = typeof(15);
+Boolean tipo = typeof(true);
+Char tipo = typeof('a');
+double tipo = typeof(15.100);
+
+// to string 
+Int valor = ToString(14);
+string valor = ToString(true);
+String valor = ToString(false);
+
+// to char toCharArray
+Char[] caracteres = toCharArray("Hola");
+
+// push 
+vector1.push("Pruebabonito");
+vector2.push(8.100);
+vector3.push('A');
+vector4.push(true);
+vector5.push(false);
+
+// pop
+
+vector1.pop();
+
+// RUN 
+run funcion1();
+
+funcion1();
+
+
+
+
