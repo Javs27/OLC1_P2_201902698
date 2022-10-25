@@ -193,21 +193,18 @@ DECLARACION:
         | LISTA_IDENTIFICADOR parentA ARITMETICA parentC
         | LLAMAR_FUNCIONES
         
-
-
-        
-
-        
 ;
 
 
 
 ARITMETICA:    
         ARITMETICA suma ARITMETICA
+        // PARA LAS OPERACONES ARITMETICAS
         | Numero 
         | ARITMETICA resta ARITMETICA
         | ARITMETICA division ARITMETICA
         | ARITMETICA multiplicacion ARITMETICA
+        //PARA LOS TIPOS DE DATOS 
         | verdadero
         | falso
         | Cadena
@@ -324,9 +321,7 @@ CONDICIONAL:
         | ARITMETICA operadorNot ARITMETICA
         | ARITMETICA operadorOr ARITMETICA
         
-       
-        
-        
+           
 ;
 
 

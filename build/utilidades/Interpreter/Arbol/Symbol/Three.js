@@ -1,0 +1,47 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const SymbolTable_1 = __importDefault(require("./SymbolTable"));
+class Three {
+    // iniciamos el arbol dentro del array podemos meter cualqueir cosa
+    constructor(instrucciones) {
+        this.instrucciones = instrucciones;
+        this.consola = '';
+        this.tablaGlobal = new SymbolTable_1.default();
+        this.errores = new Array();
+    }
+    //obtenemos consola
+    getconsola() {
+        return this.consola;
+    }
+    //seteamos consola
+    setconsola(value) {
+        this.consola = value;
+    }
+    //actualizamos la consola 
+    actualizaConsola(uptodate) {
+        this.consola = `${this.consola}${uptodate}\n`;
+    }
+    //retornamos un arreglo de instrucciones
+    getinstrucciones() {
+        return this.instrucciones;
+    }
+    setinstrucciones(value) {
+        this.instrucciones = value;
+    }
+    getErrores() {
+        return this.errores;
+    }
+    seterrores(value) {
+        this.errores = value;
+    }
+    gettablaGlobal() {
+        return this.tablaGlobal;
+    }
+    settablaGlobal(value) {
+        this.tablaGlobal = value;
+    }
+}
+exports.default = Three;
