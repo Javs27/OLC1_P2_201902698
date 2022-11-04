@@ -26,53 +26,71 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getname = exports.getSimbol = exports.tipoOp = void 0;
 const Instruccion_1 = require("../Abstract/Instruccion");
 const Symbol_1 = __importDefault(require("../Symbol/Symbol"));
 const Type_1 = __importStar(require("../Symbol/Type"));
-class Declaracion extends Instruccion_1.Instruccion {
-    constructor(id, tipo, valor, linea, columna) {
+class Incremento extends Instruccion_1.Instruccion {
+    constructor(tipo, id, linea, columna) {
         super(new Type_1.default(Type_1.DataType.INDEFINIDO), linea, columna);
-        this.id = id;
         this.tipo = tipo;
-        this.valor = valor;
+        this.id = id;
     }
     interpretar(arbol, tabla) {
-        if (this.valor == null) {
-            //tabla.setValor(this.id, new Simbolo(this.tipo, this.id, 0));
-            if (this.tipo.getTipo() == 0) {
-                tabla.setValor(this.id, new Symbol_1.default(this.tipo, this.id, 0));
-                return;
+        const value = tabla.getValor(this.id);
+        let tipoDato = value.tipo.getTipo();
+        let x = value.getvalor();
+        if (value && tipoDato == 0) {
+            if (this.tipo === tipoOp.INCRE) {
+                x = Number(x) + 1;
+                tabla.setValor(this.id, new Symbol_1.default(value.tipo, this.id, x - 1));
+                this.tipoDato.setTipo(Type_1.DataType.ENTERO);
+                return x;
             }
-            else if (this.tipo.getTipo() == 1) {
-                tabla.setValor(this.id, new Symbol_1.default(this.tipo, this.id, ""));
-                return;
+            else if (this.tipo === tipoOp.DECRE) {
+                x = Number(x) - 1;
+                tabla.setValor(this.id, new Symbol_1.default(value.tipo, this.id, x + 1));
+                this.tipoDato.setTipo(Type_1.DataType.ENTERO);
+                return x;
             }
-            else if (this.tipo.getTipo() == 4) {
-                tabla.setValor(this.id, new Symbol_1.default(this.tipo, this.id, true));
-                return;
-            }
-            else if (this.tipo.getTipo() == 5) {
-                tabla.setValor(this.id, new Symbol_1.default(this.tipo, this.id, ''));
-                return;
-            }
-            else if (this.tipo.getTipo() == 6) {
-                tabla.setValor(this.id, new Symbol_1.default(this.tipo, this.id, 0.0));
-                return;
-            }
-            return null;
         }
-        tabla.setValor(this.id, new Symbol_1.default(this.tipo, this.id, this.valor.interpretar(arbol, tabla)));
         return null;
     }
     // para el arbol
     ast(arbol) {
         const nombre_nodo = `node_${this.linea}_${this.columna}_`;
-        arbol.agregar_ast(`
-        ${nombre_nodo}[label="\\<Instruccion\\>\\nDeclaracion"];
-        ${nombre_nodo}1[label="\\<Nombre\\>\\n${this.id}"];
-        ${nombre_nodo}->${nombre_nodo}1;
-        ${nombre_nodo}->${this.valor.ast(arbol)}
-        `);
+        return `
+        /**/${nombre_nodo}1;
+        ${nombre_nodo}1[label="${this.id}"];
+        ${nombre_nodo}[label="${getSimbol(this.tipo)}"];
+        ${nombre_nodo}1->${nombre_nodo};`;
     }
 }
-exports.default = Declaracion;
+exports.default = Incremento;
+var tipoOp;
+(function (tipoOp) {
+    tipoOp[tipoOp["INCRE"] = 0] = "INCRE";
+    tipoOp[tipoOp["DECRE"] = 1] = "DECRE";
+})(tipoOp = exports.tipoOp || (exports.tipoOp = {}));
+function getSimbol(objeto) {
+    switch (objeto) {
+        case 0:
+            return "++";
+        case 1:
+            return "--";
+        default:
+            return "";
+    }
+}
+exports.getSimbol = getSimbol;
+function getname(objeto) {
+    switch (objeto) {
+        case 0:
+            return "INCREMENTO";
+        case 1:
+            return "DECREMENTO";
+        default:
+            return "";
+    }
+}
+exports.getname = getname;

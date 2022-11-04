@@ -22,31 +22,40 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const Instruccion_1 = require("../Abstract/Instruccion");
-const Error_1 = __importDefault(require("../Exceptions/Error"));
 const Type_1 = __importStar(require("../Symbol/Type"));
-class Imprimir extends Instruccion_1.Instruccion {
-    constructor(expresion, linea, columna) {
+class Funciones extends Instruccion_1.Instruccion {
+    constructor(identificador, parametrosFuncion, instruccionesFuncion, linea, columna) {
         super(new Type_1.default(Type_1.DataType.INDEFINIDO), linea, columna);
-        this.expresion = expresion;
+        this.identificador = identificador;
+        this.parametrosFuncion = parametrosFuncion;
+        this.instruccionesFuncion = instruccionesFuncion;
+        this.linea = linea;
+        this.columna = columna;
     }
     interpretar(arbol, tabla) {
-        let valor = this.expresion.interpretar(arbol, tabla);
-        if (valor instanceof Error_1.default)
-            return valor;
-        arbol.actualizaConsola(valor + '');
     }
+    // para el arbol
     ast(arbol) {
-        const nombreNodo = `node_${this.linea}_${this.columna}_`;
+        const nombre_nodo = `node_${this.linea}_${this.columna}_`;
         arbol.agregar_ast(`
-    ${nombreNodo}[label="\\<Instruccion\\>\\nImprimir"];`);
-        if (this.expresion != null) {
-            arbol.agregar_ast(`${nombreNodo}->${this.expresion.ast(arbol)}`);
-        }
+        ${nombre_nodo} [label="\\<Instruccion\\>\\nFuncion"];
+        ${nombre_nodo}1[label="\\<Nombre\\>\\n${this.identificador}"];
+        ${nombre_nodo}2[label="\\<Parametros\\>"];
+        ${nombre_nodo}->${nombre_nodo}1;
+        ${nombre_nodo}->${nombre_nodo}2;
+        ${nombre_nodo}->node_${this.instruccionesFuncion.linea}_${this.instruccionesFuncion.columna}_;
+        `);
+        this.instruccionesFuncion.ast(arbol);
+        let tmp = 3; //empiezo desde 5 porque ya esta ocupado 1 y 2
+        this.parametrosFuncion.forEach(x => {
+            arbol.agregar_ast(`
+            ${nombre_nodo}${tmp}[label="\\<Nombre,Tipo\\>\\n${x}"];
+            ${nombre_nodo}2->${nombre_nodo}${tmp};
+            `);
+            tmp++;
+        });
     }
 }
-exports.default = Imprimir;
+exports.default = Funciones;

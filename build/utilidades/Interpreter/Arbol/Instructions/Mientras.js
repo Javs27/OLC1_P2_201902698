@@ -27,26 +27,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Instruccion_1 = require("../Abstract/Instruccion");
-const Error_1 = __importDefault(require("../Exceptions/Error"));
 const Type_1 = __importStar(require("../Symbol/Type"));
-class Imprimir extends Instruccion_1.Instruccion {
-    constructor(expresion, linea, columna) {
+const SymbolTable_1 = __importDefault(require("../Symbol/SymbolTable"));
+class Mientras extends Instruccion_1.Instruccion {
+    constructor(operacion, listaInstrucciones, linea, columna) {
         super(new Type_1.default(Type_1.DataType.INDEFINIDO), linea, columna);
-        this.expresion = expresion;
+        this.operacion = operacion;
+        this.listaInstrucciones = listaInstrucciones;
     }
     interpretar(arbol, tabla) {
-        let valor = this.expresion.interpretar(arbol, tabla);
-        if (valor instanceof Error_1.default)
-            return valor;
-        arbol.actualizaConsola(valor + '');
+        const tablaLocal = new SymbolTable_1.default(tabla);
+        let aux = this.operacion.interpretar(arbol, tabla);
+        while (aux) {
+            /*for(let i of this.listaInstrucciones){
+                
+                i.interpretar(arbol, tabla)
+            }*/
+            this.listaInstrucciones.interpretar(arbol, tabla);
+            aux = this.operacion.interpretar(arbol, tabla);
+            //aux = this.operacion.interpretar(arbol, tabla)
+        }
+        return null;
     }
     ast(arbol) {
-        const nombreNodo = `node_${this.linea}_${this.columna}_`;
+        const name_node = `node_${this.linea}_${this.columna}_`;
         arbol.agregar_ast(`
-    ${nombreNodo}[label="\\<Instruccion\\>\\nImprimir"];`);
-        if (this.expresion != null) {
-            arbol.agregar_ast(`${nombreNodo}->${this.expresion.ast(arbol)}`);
-        }
+        ${name_node}[label="\\<Instruccion\\>\\nwhile"];
+        ${name_node}1[label="\\<Condicion\\>"];
+        ${name_node}->${name_node}1;
+        ${name_node}1->${this.operacion.ast(arbol)}
+        ${name_node}->node_${this.listaInstrucciones.linea}_${this.listaInstrucciones.columna}_;
+        `);
+        this.listaInstrucciones.ast(arbol);
     }
 }
-exports.default = Imprimir;
+exports.default = Mientras;

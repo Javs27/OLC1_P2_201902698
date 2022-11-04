@@ -22,31 +22,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const Instruccion_1 = require("../Abstract/Instruccion");
-const Error_1 = __importDefault(require("../Exceptions/Error"));
 const Type_1 = __importStar(require("../Symbol/Type"));
-class Imprimir extends Instruccion_1.Instruccion {
-    constructor(expresion, linea, columna) {
+class Casteo extends Instruccion_1.Instruccion {
+    constructor(tipoDato, identificador, valor, linea, columna) {
         super(new Type_1.default(Type_1.DataType.INDEFINIDO), linea, columna);
-        this.expresion = expresion;
+        this.tipoDato = tipoDato;
+        this.identificador = identificador;
+        this.valor = valor;
+        this.columna = columna;
+        this.linea;
     }
     interpretar(arbol, tabla) {
-        let valor = this.expresion.interpretar(arbol, tabla);
-        if (valor instanceof Error_1.default)
-            return valor;
-        arbol.actualizaConsola(valor + '');
     }
     ast(arbol) {
         const nombreNodo = `node_${this.linea}_${this.columna}_`;
         arbol.agregar_ast(`
-    ${nombreNodo}[label="\\<Instruccion\\>\\nImprimir"];`);
-        if (this.expresion != null) {
-            arbol.agregar_ast(`${nombreNodo}->${this.expresion.ast(arbol)}`);
-        }
+        ${nombreNodo}[label="Instruccion\\nCasteo"];
+        ${nombreNodo}2[label="Tipo\\n${this.tipoDato.obtenerTipoDato()}"];
+        ${nombreNodo}1[label="Nombre\\n${this.identificador}"];
+        ${nombreNodo}->${nombreNodo}2
+        ${nombreNodo}->${nombreNodo}1
+        ${nombreNodo}->${this.valor.ast(arbol)}`);
     }
 }
-exports.default = Imprimir;
+exports.default = Casteo;

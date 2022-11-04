@@ -1,7 +1,7 @@
 import Tipo from './Type';
 
 export default class Symbol {
-  private tipo: Tipo;
+  public tipo: Tipo;
   private identificador: String;
   private valor: any;
 

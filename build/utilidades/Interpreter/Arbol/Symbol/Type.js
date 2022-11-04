@@ -14,6 +14,33 @@ class Type {
     setTipo(tipo) {
         this.tipo = tipo;
     }
+    obtenerTipoDato() {
+        let tipo = "";
+        switch (this.tipo) {
+            case 0:
+                tipo = "Int";
+                return tipo;
+            case 1:
+                tipo = "String";
+                return tipo;
+            case 2:
+                tipo = "Identificador";
+                return tipo;
+            case 3:
+                tipo = "INDEFINIDO";
+                return tipo;
+            case 4:
+                tipo = "BOOLEANO";
+                return tipo;
+            case 5:
+                tipo = "CHAR";
+                return tipo;
+            case 6:
+                tipo = "DECIMAL";
+                return tipo;
+        }
+        return tipo;
+    }
 }
 exports.default = Type;
 // contiene todos los tipos de datos
@@ -24,4 +51,7 @@ var DataType;
     DataType[DataType["CADENA"] = 1] = "CADENA";
     DataType[DataType["IDENTIFICADOR"] = 2] = "IDENTIFICADOR";
     DataType[DataType["INDEFINIDO"] = 3] = "INDEFINIDO";
+    DataType[DataType["BOOLEANO"] = 4] = "BOOLEANO";
+    DataType[DataType["CHAR"] = 5] = "CHAR";
+    DataType[DataType["DECIMAL"] = 6] = "DECIMAL";
 })(DataType = exports.DataType || (exports.DataType = {}));

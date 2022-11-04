@@ -31,5 +31,15 @@ class Error {
             this.columna +
             '\n');
     }
+    // para retornar fila para tabla de errores
+    FilaErores() {
+        return ( // generamos lineas en el html
+        '<tr>' +
+            '<td>' + this.tipoError + '</td>\n' +
+            '<td>' + this.desc + '</td>\n' +
+            '<td>' + this.fila + '</td>\n' +
+            '<td>' + this.columna + '</td>\n' +
+            '</tr>');
+    }
 }
 exports.default = Error;

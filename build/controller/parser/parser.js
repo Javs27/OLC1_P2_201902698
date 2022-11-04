@@ -4,10 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parse = exports.listaErrores = void 0;
-const Error_1 = __importDefault(require("../../utilidades/Interpreter/Arbol/Exceptions/Error"));
 const Three_1 = __importDefault(require("../../utilidades/Interpreter/Arbol/Symbol/Three"));
 const SymbolTable_1 = __importDefault(require("../../utilidades/Interpreter/Arbol/Symbol/SymbolTable"));
-const Instruccion_1 = require("../../utilidades/Interpreter/Arbol/Abstract/Instruccion");
 exports.listaErrores = [];
 const parse = (req, res) => {
     exports.listaErrores = new Array();
@@ -17,18 +15,41 @@ const parse = (req, res) => {
         let ast = new Three_1.default(parser.parse(peticion));
         var tabla = new SymbolTable_1.default();
         ast.settablaGlobal(tabla);
-        for (let i of ast.getinstrucciones()) {
-            if (i instanceof Error_1.default) {
-                exports.listaErrores.push(i);
-                ast.actualizaConsola(i.returnError());
+        // para el arbol 
+        ast.agregar_ast(`nodeOriginal[label="<\\Lista_Instrucciones\\>"];`);
+        //generar el ast primero
+        for (const instr of ast.getinstrucciones()) {
+            try {
+                instr.ast(ast);
+                ast.agregar_ast(`nodeOriginal->node_${instr.linea}_${instr.columna}_;`);
             }
-            var resultador = i instanceof Instruccion_1.Instruccion ? i.interpretar(ast, tabla) : new Error_1.default("Error Semantico", "no se puede operar", 0, 0);
-            if (resultador instanceof Error_1.default) {
-                exports.listaErrores.push(resultador);
-                ast.actualizaConsola(resultador.returnError());
+            catch (error) {
             }
         }
-        res.json({ consola: ast.getconsola(), errores: exports.listaErrores, simbolos: [] });
+        let graficarAST = ("digraph G {\nnode[shape=box];" + ast.get_ast() + "\n}");
+        console.log(graficarAST);
+        // aca empieza el analisis semantico 
+        /* for (let i of ast.getinstrucciones()) {
+           if (i instanceof Errores) {
+             listaErrores.push(i);
+             ast.actualizaConsola((<Errores>i).returnError());
+           }
+   
+      
+           var resultador = i instanceof Instruccion ?  i.interpretar(ast, tabla) :console.log("Error") ;
+           if (resultador instanceof Errores) {
+             listaErrores.push(resultador);
+             ast.actualizaConsola((<Errores>resultador).returnError());
+           }
+         }*/
+        // aca termina el analisis semantico 
+        // extraemos el codigo de la tableHTML
+        let TableHTML = TablaErrores();
+        let TableSymbols = ast.createTableSymbols();
+        console.log(TableHTML);
+        //console.log(TableHTML)
+        // ENVIARMOS LA VARIBLE: Y DESPUES SE ENVIA EL CONTENIDO 
+        res.json({ consola: ast.getconsola(), errores: exports.listaErrores, simbolos: [], ErroresHTML: TableHTML, tablaSimbolos: TableSymbols, ArbolGraficado: graficarAST });
     }
     catch (err) {
         console.log(err);
@@ -36,3 +57,18 @@ const parse = (req, res) => {
     }
 };
 exports.parse = parse;
+function TablaErrores() {
+    var TableHTML = '<table style="border-collapse: collapse; width: 100%;" border="1">' +
+        '<tbody>' +
+        '<tr>' +
+        '<td style="text-align: center;"><strong>TIPO DE ERROR</strong></td>' +
+        '<td style="text-align: center;"><strong>DESCRIPCION</strong></td>' +
+        '<td style="text-align: center;"><strong>FILA</strong></td>' +
+        '<td style="text-align: center;"><strong>COLUMNA</strong></td>' +
+        '</tr>';
+    for (let error in exports.listaErrores) {
+        TableHTML += (exports.listaErrores[error].FilaErores());
+    }
+    TableHTML += '</tbody>' + '</table>';
+    return TableHTML;
+}

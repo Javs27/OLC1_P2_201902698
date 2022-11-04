@@ -27,26 +27,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Instruccion_1 = require("../Abstract/Instruccion");
-const Error_1 = __importDefault(require("../Exceptions/Error"));
+const SymbolTable_1 = __importDefault(require("../Symbol/SymbolTable"));
 const Type_1 = __importStar(require("../Symbol/Type"));
-class Imprimir extends Instruccion_1.Instruccion {
-    constructor(expresion, linea, columna) {
+class NewInstructions extends Instruccion_1.Instruccion {
+    constructor(codigo, linea, columna) {
         super(new Type_1.default(Type_1.DataType.INDEFINIDO), linea, columna);
-        this.expresion = expresion;
+        this.codigo = codigo;
+        this.linea = linea;
+        this.columna = columna;
     }
     interpretar(arbol, tabla) {
-        let valor = this.expresion.interpretar(arbol, tabla);
-        if (valor instanceof Error_1.default)
-            return valor;
-        arbol.actualizaConsola(valor + '');
-    }
-    ast(arbol) {
-        const nombreNodo = `node_${this.linea}_${this.columna}_`;
-        arbol.agregar_ast(`
-    ${nombreNodo}[label="\\<Instruccion\\>\\nImprimir"];`);
-        if (this.expresion != null) {
-            arbol.agregar_ast(`${nombreNodo}->${this.expresion.ast(arbol)}`);
+        const tablaLocal = new SymbolTable_1.default(tabla);
+        //recorre todas las instrucciones
+        for (const x of this.codigo) {
+            if (x instanceof Instruccion_1.Instruccion) {
+                x.interpretar(arbol, tabla);
+            }
         }
     }
+    ast(arbol) {
+        const name_node = `node_${this.linea}_${this.columna}_`;
+        arbol.agregar_ast(`
+        ${name_node}[label="Instrucciones"];        
+        `);
+        //recorre cada una de las intrucciones 
+        this.codigo.forEach(x => {
+            arbol.agregar_ast(`${name_node}->node_${x.linea}_${x.columna}_;`);
+            x.ast(arbol);
+        });
+    }
 }
-exports.default = Imprimir;
+exports.default = NewInstructions;

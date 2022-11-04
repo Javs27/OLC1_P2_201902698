@@ -18,4 +18,12 @@ export default class Imprimir extends Instruccion {
     if (valor instanceof Errores) return valor;
     arbol.actualizaConsola(valor + '');
   }
+
+  public ast(arbol: Three) {
+    
+    const nombreNodo = `node_${this.linea}_${this.columna}_`
+    arbol.agregar_ast(`
+    ${nombreNodo}[label="\\<Instruccion\\>\\nImprimir"];`)
+    if (this.expresion!= null){arbol.agregar_ast(`${nombreNodo}->${this.expresion.ast(arbol)}`)}
+}
 }

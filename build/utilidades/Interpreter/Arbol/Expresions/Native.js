@@ -41,12 +41,35 @@ class Nativo extends Instruccion_1.Instruccion {
         else if (this.tipoDato.getTipo() === Type_1.DataType.CADENA) {
             return this.valor.toString();
         }
+        else if (this.tipoDato.getTipo() === Type_1.DataType.CHAR) {
+            return this.valor.toString();
+        }
         else if (this.tipoDato.getTipo() === Type_1.DataType.IDENTIFICADOR) {
             let value = tabla.getValor(this.valor);
             // PARA QUE RETORNE EL TIPO DE DATO CUANDO ENTEROS
             this.tipoDato = (0, get_1.default)(value, 'tipo', new Type_1.default(Type_1.DataType.ENTERO));
             return (0, get_1.default)(value, 'valor');
         }
+        else if (this.tipoDato.getTipo() === Type_1.DataType.BOOLEANO) {
+            if (this.valor == 'true') {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    // para el arbol 
+    ast() {
+        const nombre = `node_${this.linea}_${this.columna}_`;
+        if (this.tipoDato.getTipo() == Type_1.DataType.CADENA)
+            return `
+    ${nombre};
+    ${nombre}[label="\\"${this.valor.toString()}\\""];`;
+        else
+            return `
+    ${nombre};
+    ${nombre}[label="${this.valor.toString()}"];`;
     }
 }
 exports.default = Nativo;
