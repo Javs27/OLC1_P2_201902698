@@ -1,0 +1,68 @@
+import React, {useState} from "react";
+import NavBar from "../Components/NavBar";
+import EditorCodigo from "../Components/EditorCodigo";
+import Service from "../Servicios/Service";
+import * as ReactDOM from 'react-dom';
+
+// mismo nombre del archivo principal
+function Index(){
+    const [ value,  setValue ] = useState("")
+    const [response, setResponse] = useState("")
+    const [response2, setResponse2 ]= useState("")
+    
+
+    const changeText = (valueA) => {
+        setValue(valueA)
+
+    }
+
+    const handlerPostParse = () =>{
+       Service.parse(value)
+        .then(({consola}) => {
+            setResponse(consola)
+        })
+
+        //ESTO ES PARA ENVIAR LA TABLA 
+       
+        Service.parse(value)
+        .then(({ErroresHTML}) => {
+            setResponse2(ErroresHTML)
+
+        })
+
+
+    }
+
+
+
+    const handlerClear= ()=> {
+        setResponse("")
+    }
+
+    const  handlerGetServerInfo = ()=> {
+        Service.ping()
+        .then((response) => {
+            setResponse(JSON.stringify(response))
+        })
+    }
+
+
+    const buttonTraducir= <button type="button" class="btn btn-outline-primary" onClick={handlerPostParse}>Traducir</button>
+    const buttonLimpiar= <button type="button" class="btn btn-outline-primary"  onClick={handlerClear}>Limpiar</button>
+    const buttonServerOn= <button type="button" class="btn btn-outline-primary"  onClick={handlerGetServerInfo}>Server</button>
+
+    return(
+        <>  
+          
+            < NavBar/>
+            <h1> <center> Proyecto 2 Orgnizacion Compiladores 1</center></h1>
+            
+            <EditorCodigo  text={"Ingrese codigo:"} handlerChange={changeText} rows={15}  comp ={buttonTraducir}/>
+            <EditorCodigo  text={"Consola Salida:"} value = {response} rows={10} comp ={buttonLimpiar} />
+            <div dangerouslySetInnerHTML={{__html: response2}} ></div>
+            
+        </>
+    )
+}
+
+export default Index;

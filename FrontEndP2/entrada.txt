@@ -1,0 +1,381 @@
+
+int javier, joel, prueba;
+
+celular = true;
+int var1, var2, var3;
+     flag2_, flag33 = false;
+char ch_1, ch_2, ch3, qwert123 = 'M';
+universidad= "usac";
+int asd,asd,a_= 1000;
+     ;
+
+int edad = (int) 18.6;
+int intBool = (int) false;
+int intDecimal = (int) '0' ;
+Int intCadena = (int) "100";
+
+double doubleInt = (Double) 16; 
+double doubleString = (Double) "16.0";
+
+
+boolean boolInt = (Boolean)  11  ;
+Boolean boolDouble = (Boolean) 1.0;
+Boolean boolString = (Boolean) "0";
+Boolean boolChar = (Boolean) "1";
+
+Char charInt = (Char) 16;
+Char charDouble = (Char) 16.1;
+Char charBoolean = (Char) false;
+Char charBoolean = (Char) true;
+Char charString = (Char) "asdf";
+
+String stringInt = (String) 16; 
+String stringDouble = (String) 16.1; 
+String stringBoolean = (String) false;
+String stringBoolean = (String) true;
+String stringChar = (String) "a"; 
+String stringChar = (String) "prueba"; 
+
+
+
+//acceso a vectores
+String valorPosicion = vector1[1]; 
+Char valorPosicion = vector2[1]; 
+Boolean valorPosicion = vector3[1]; 
+Double valorPosicion = vector4[1]; 
+int valor = vectorDosd[1]; 
+
+Char valor = vectorDosd[1][1];
+String valor = vectorDosd[1][1];
+Boolean valor = vectorDosd[1][1];
+Double valor = vectorDosd[1][1]; 
+int valor = vectorDosd[1][1]; 
+
+
+// declaracioon tipo 1 de vectores
+Int [ ] vector1 = new Int[4];
+double [ ] vector1 = new double[4];
+boolean [ ] vector1 = new boolean[4];
+char [ ] vector1 = new char[4];
+String [ ] vector1 = new String[4];
+
+Char [ ][ ] vectorDosd = new Char [(Int) "4"] [4] ; 
+Int [ ][ ] vectorDosd = new int [4] [4] ; 
+Double [ ][ ] vectorDosd = new Double [4] [4] ; 
+String [ ][ ] vectorDosd = new String [4] [4] ;
+Boolean [ ][ ] vectorDosd = new Boolean [4] [4] ;  
+
+// declaracion tipo 2 con lista de valores
+
+int [ ] vector1 = {8, 8,8,8};
+int [ ] vector1 = {8, 8,8,8, 8,8,8};
+String [ ] vector2 = {"prueba2","prueba3","prueba4","prueba3","prueba4"};
+Double [ ] vector4 = {8.5, 8.6,8.7,8.8};
+Char [] vector3 = {"a","b","c,"d"};
+Boolean [ ] vector5 = {true};
+Boolean [ ] vector6 = {true,true};
+Boolean [ ] vector1 = {false, false};
+Boolean [ ] vector1 = {false};
+
+
+int [ ][ ] vectordosd2 = {{ 0 ,0},{0 , 0}};
+//String [ ][ ] vectordosd2 = {{"prueba2","prueba3"},{"prueba2","prueba3"}};
+
+
+
+// if normal
+if ( 10 < 5){
+    int Prueba100 = 100;
+    universidad= "usac";
+    int asd,asd,a_= 1000;
+    int prueba = 5+5+javier ;
+}
+
+// if anidado
+if ( 10 < 5){
+    if ( 10 != 5){
+        int Prueba100 = 100;
+    }
+}
+
+// if else
+if ( 10 < 5){
+    int Prueba100 = 100;
+}else{
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+
+// IF CON ELIF
+ if ( 10 < 5){
+    int Prueba100 = 100;
+}elif( 10 > 5){
+    int Prueba100 = 100;
+    universidad= "usac";
+}elif( 10 == 5){
+    int Prueba100 = 100;
+    universidad= "usac";
+}elif(  ){
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+else{
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+
+
+
+// switch case
+
+int edad = 18;
+switch(x){
+case 1:
+    int Prueba100 = 100;
+    universidad = "usac";
+    if( 10 == 5){
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+case 2:
+    int Prueba100 = 100;
+    universidad = "usac";
+case 3:
+    int Prueba100 = 100;
+    universidad = "usac";
+case 4:
+    int Prueba100 = 100;
+    universidad = "usac";
+Default:
+    universidad = "PRUEBA 100";
+}
+
+// sin default
+switch(x){
+case 1:
+    int Prueba100 = 100;
+    universidad = "usac";
+case 1:
+    int Prueba100 = 100;
+    universidad = "usac";
+case 1:
+    int Prueba100 = 100;
+    universidad = "usac";
+      
+}
+
+// ciclo While
+
+
+edad ++;
+Incremtos = a++;
+anio = 1 + anio++; 
+anio = 1 - anio--; 
+anio = anio--; 
+anio = anio++; 
+
+
+// modificacion DE VECTORES 
+vector2[1] = "OLC1 ";
+vector2[2] = "2do Semestre" +vectorNumero[2];
+
+while (x<100){
+    if (x > 50)
+    {
+    prueba = "prueba20";
+    //Más sentencias
+    }else{
+    int Prueba100 = 100;
+    universidad= "usac";
+}
+}
+
+//CONTINUAR CON EL FOR
+for ( int i=0; i<3;i++ ){
+    int Prueba100 = 100;
+     if ( 10 < 5){
+    int Prueba100 = 100;
+}
+}
+
+
+for ( i=5; i>2;i=i+1 ){
+    int Prueba100 = 100;
+}
+
+for ( i=5; i>2;i=i-1 ){
+    int Prueba100 = 100;
+    int Prueba100 = 100;
+    int Prueba100 = 100;
+    int Prueba100 = 100;
+
+}
+
+// ciclo while 
+do{
+ if (a <3){
+ javier = "javer1"; 
+ println("Hola mundo!!");
+ }
+ else{
+ javier = "javer1"; 
+ }
+ a ++;
+}while (i=5);
+
+
+// do until
+
+do{
+    if (a <3){
+    javier = "javer1";
+    println("Hola mundo!!"); 
+    }
+    else{
+    javier = "javer1"; 
+    }
+    a --;
+
+} until (a==0);
+
+
+continue;
+break;
+continue;
+break;
+continue;
+break;
+
+for(int i = 0; i < 9; i++){
+ if(i==5){
+    println("Hola mundo!!");
+    int Prueba100 = 100; continue;
+ }
+ int Prueba100 = 100;
+}
+
+
+return;
+return;
+return PRUEBA ;
+
+for(i = 0; i < 9; i++){
+     if(i==5){
+        println("Hola mundo!!");
+        return; //se detiene
+    }
+}   
+
+// funcion SIN PARAMETROS
+
+conversion (): Int {
+ if (tipo == "metro")
+    {
+    return ;
+    }else{
+    return ;
+    }
+  }
+// funcion  CON PARAMETROS
+
+conversion (double pies, string tipo ): Int {
+ if (tipo == "metro")
+    {
+    return ;
+    }else{
+    return ;
+    }
+  }
+
+  int prueba1;
+
+conversion (): Int {
+  print("Prueba1");
+if (tipo == "metro"){
+             print("Prueba1");
+  }else{
+   print("Prueba1");
+}
+}
+
+  // METODOS
+
+holamundo(): void {
+    universidad= "usac";
+int asd,asd,a_= 1000;
+int prueba = 5+5+javier ;
+}
+
+// metodo sin tipo definido
+holamundo():  {
+        universidad= "usac";
+        println("Hola mundo!!");
+        int prueba = 5+5+javier ;
+}
+
+Print("Hola mundo!!");
+print(100);
+print('a');
+print(true);
+print(false);
+print(5+8-10/100);
+
+println("Hola mundo!!");
+println(100);
+println('a');
+println(true);
+println(false);
+println(5+8-10/100);
+
+
+string cad_1 = toLower("Prueba");
+string cad_1 = toUpper("Prueba");
+
+Double valor = round(5.8); 
+Double valor2 = round(5.4);
+
+Int valor = round(5.8); 
+Int valor2 = round(5.4);
+
+
+String[ ] vector2 = {"hola", "Mundo"};
+String [ ] vector2 = {"prueba2","prueba3","prueba4","prueba3","prueba4"};
+string vector2 = length(vector2);
+
+int tam_hola = length(tam_vector[0]);
+
+
+// Tipe of
+String tipo = typeof(15);
+int tipo = typeof(15);
+Boolean tipo = typeof(true);
+Char tipo = typeof('a');
+double tipo = typeof(15.100);
+
+// to string 
+Int valor = ToString(14);
+string valor = ToString(true);
+String valor = ToString(false);
+
+// to char toCharArray
+Char[] caracteres = toCharArray("Hola");
+
+// push 
+vector1.push("Pruebabonito");
+vector2.push(8.100);
+vector3.push('A');
+vector4.push(true);
+vector5.push(false);
+
+// pop
+
+vector1.pop();
+
+// RUN 
+run funcion1();
+
+funcion1();
+
+
+
+
