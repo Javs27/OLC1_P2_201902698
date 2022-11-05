@@ -124,7 +124,7 @@
 "run"       return 'Run';
 "Default"   return 'default';
 
-\'.{1}\'        return 'Caracter';
+\'.{1}\'      {yytext=yytext.substr(1,yyleng-2); return 'Caracter';} 
 [0-9]+("."[0-9]+)?\b    return 'Numero';
 \"(.+)*\"                {yytext=yytext.substr(1,yyleng-2); return 'Cadena';} 
 
