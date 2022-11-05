@@ -20,7 +20,7 @@ export const parse = (req: Request & unknown, res: Response): void => {
       ast.settablaGlobal(tabla);
       
       // para el arbol 
-      ast.agregar_ast(`nodeOriginal[label="<\\Lista_Instrucciones\\>"];`)
+      ast.agregar_ast(`nodeOriginal[label="<\\Inicio\\>"];`)
 
        //generar el ast primero
        for (const instr of ast.getinstrucciones()) {
